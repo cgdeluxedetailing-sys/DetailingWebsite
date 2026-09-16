@@ -1,28 +1,17 @@
-const areas={bairnsdale:'Bairnsdale',drouin:'Drouin',glengarry:'Glengarry',heyfield:'Heyfield','loch-sport':'Loch Sport',maffra:'Maffra',moe:'Moe',morwell:'Morwell',newborough:'Newborough',rosedale:'Rosedale',sale:'Sale',stratford:'Stratford',trafalgar:'Trafalgar',toongabbie:'Toongabbie',traralgon:'Traralgon',warragul:'Warragul',yarram:'Yarram'};
-const slug=location.pathname.split('/').filter(Boolean).pop()||document.body.dataset.area||'';
-const key=slug.replace(/^car-detailing-/,'');
-const town=areas[key]||document.body.dataset.area||key;
-const copy={
- sale:'CG Mobile Detailing brings premium car care directly to homes and workplaces across Sale. From everyday interior cleans to complete vehicle transformations, we bring the full professional setup to you.',
- maffra:'CG Mobile Detailing brings premium car care to Maffra, just 17km from our Sale base. We handle everything from farm dust and mud on daily drivers to restoring the shine on weekend cars.',
- stratford:'CG Mobile Detailing provides convenient mobile detailing throughout Stratford, bringing professional interior and exterior care directly to your home or workplace.',
- rosedale:'CG Mobile Detailing brings professional mobile detailing to Rosedale, with interior cleans, exterior refreshes, paint protection and complete vehicle transformations available at your property.',
- traralgon:'CG Mobile Detailing services Traralgon with a complete mobile setup for deep interior cleans, exterior detailing, paint protection and ceramic coating.',
- morwell:'CG Mobile Detailing provides fully mobile car detailing throughout Morwell and surrounding Latrobe Valley areas, without the hassle of dropping your vehicle off.',
- moe:'CG Mobile Detailing brings professional vehicle detailing to Moe, from routine maintenance cleans through to full interior and exterior transformations.',
- bairnsdale:'CG Mobile Detailing services Bairnsdale and surrounding East Gippsland areas, bringing professional equipment directly to your home or workplace.',
- warragul:'CG Mobile Detailing provides mobile detailing throughout Warragul and surrounding West Gippsland areas, with professional interior, exterior and protection services.',
- drouin:'CG Mobile Detailing services Drouin, bringing everything required for a professional detail directly to your home or workplace.',
- heyfield:'CG Mobile Detailing provides convenient vehicle detailing throughout Heyfield, from deep interior cleans and exterior refreshes to ceramic coatings and paint protection.',
- trafalgar:'CG Mobile Detailing services Trafalgar in West Gippsland, bringing professional interior and exterior detailing directly to your home or workplace.',
- toongabbie:'CG Mobile Detailing services Toongabbie and surrounding rural areas, bringing the same professional equipment and attention to detail directly to your property.',
- 'loch-sport':'CG Mobile Detailing brings mobile detailing to Loch Sport, with professional interior, exterior and paint protection services delivered where your vehicle is parked.',
- newborough:'CG Mobile Detailing services Newborough and the surrounding Latrobe Valley, bringing premium detailing and paint protection directly to your property.',
- glengarry:'CG Mobile Detailing provides fully mobile detailing throughout Glengarry and surrounding Gippsland areas, with professional results delivered at your home or workplace.',
- yarram:'CG Mobile Detailing brings professional mobile detailing to Yarram and surrounding South Gippsland areas, without the need for a workshop drop-off.'
-};
-document.title=`Mobile Car Detailing ${town} VIC | CG Mobile Detailing`;
-const desc=document.querySelector('meta[name="description"]'); if(desc) desc.content=`Professional mobile car detailing in ${town} VIC. CG Mobile Detailing comes to your home or workplace.`;
-document.querySelectorAll('[data-town]').forEach(el=>el.textContent=town);
-const copyEl=document.querySelector('[data-copy]'); if(copyEl) copyEl.innerHTML=(copy[key]||`CG Mobile Detailing provides professional mobile car detailing throughout ${town} and surrounding Gippsland areas.`)+`<br><br>No drop-off. No waiting around. Just professional results delivered where your vehicle is parked.`;
-const faq=document.querySelector('[data-faq]'); if(faq) faq.textContent=`Yes, CG Mobile Detailing provides fully mobile detailing throughout ${town} and surrounding areas.`;
+const areas={
+'bairnsdale':'Bairnsdale','drouin':'Drouin','glengarry':'Glengarry','heyfield':'Heyfield','loch-sport':'Loch Sport','maffra':'Maffra','moe':'Moe','morwell':'Morwell','newborough':'Newborough','rosedale':'Rosedale','sale':'Sale','stratford':'Stratford','toongabbie':'Toongabbie','trafalgar':'Trafalgar','traralgon':'Traralgon','warragul':'Warragul','yarram':'Yarram'};
+const slug=location.pathname.split('/').filter(Boolean).pop().replace(/^car-detailing-/,'');
+const town=areas[slug]||'Gippsland'; document.body.dataset.area=slug;
+document.title=`Mobile Car Detailing in ${town} | CG Mobile Detailing`;
+document.querySelector('meta[name="description"]').content=`Professional mobile car detailing in ${town}, Gippsland. CG Mobile Detailing comes to you.`;
+const img=['c17dd9e9-11e9-4b87-bf35-dfc243e75e04/tempImagec5h5N5.jpg','ddfddb4a-4658-4b0e-8376-e58207077c9b/IMG_4041.jpg','925b2ab3-c247-4a81-8697-00c44cf5d6b3/tempImageRLuqSD.jpg','8996ccef-7480-4a4c-8bc8-3a879b0db0d2/IMG_4132.jpg'].map(x=>'https://images.squarespace-cdn.com/content/v1/69acf61f583cef279e938296/'+x);
+const areasText='Sale, Maffra, Stratford, Rosedale, Traralgon, Morwell, Moe, Warragul, Bairnsdale, Heyfield, Newborough, Trafalgar, Toongabbie, Glengarry, Drouin, Yarram and Loch Sport';
+document.getElementById('location-page').innerHTML=`
+<section class="page-hero"><div class="hero-inner"><p class="eyebrow">CG MOBILE DETAILING</p><h1>Professional Mobile Car Detailing in ${town}</h1><p>Premium interior and exterior detailing brought directly to your home, workplace or property across ${town} and surrounding Gippsland.</p><a class="btn" href="../../booking/">BOOK ONLINE NOW</a></div></section>
+<section class="trust"><div><strong>5 STAR</strong><span>Rated Service</span></div><div><strong>PRO EQUIPMENT</strong><span>Professional Results</span></div><div><strong>WE COME TO YOU</strong><span>Home or Workplace</span></div></section>
+<section class="split-section"><div><p class="eyebrow">MORE THAN JUST A CAR WASH</p><h2>A Complete Vehicle Transformation.</h2><p>We take care of dirt, dust, stains, built-up grime, pet hair and everyday mess with professional equipment and careful attention to detail.</p><p>For customers in ${town}, we bring the detailing service to your home, workplace or another suitable location.</p></div><img src="${img[0]}" alt="Professional car detailing result"></section>
+<section class="feature-grid"><article><img src="${img[1]}" alt="Mobile detailing equipment"><h3>We Come To You</h3><p>Home, workplace or driveway detailing across ${town}.</p></article><article><img src="${img[2]}" alt="Detailed vehicle exterior"><h3>Premium Results</h3><p>Professional products and equipment for a noticeably cleaner vehicle.</p></article><article><img src="${img[3]}" alt="Interior car detailing"><h3>Attention To Detail</h3><p>The finishing touches make the difference.</p></article></section>
+<section class="packages"><div class="section-heading"><p class="eyebrow">PROFESSIONAL DETAILING PACKAGES</p><h2>Choose Your Detail.</h2></div><div class="package-grid"><article class="package"><h3>Interior Valet</h3><strong>$165</strong><p>Deep interior clean for seats, carpets, plastics and glass.</p><a href="../../booking/">BOOK THIS SERVICE</a></article><article class="package"><h3>Exterior Valet</h3><strong>$125</strong><p>Thorough exterior wash, wheels, tyres and finishing touches.</p><a href="../../booking/">BOOK THIS SERVICE</a></article><article class="package featured"><span class="badge">MOST POPULAR</span><h3>Ultra Valet</h3><strong>$290</strong><p>Our complete interior and exterior transformation.</p><a href="../../booking/">BOOK THIS SERVICE</a></article></div></section>
+<section class="area-section"><p class="eyebrow">LOCAL MOBILE DETAILING</p><h2>Detailing Across Gippsland</h2><p>We service ${town} plus ${areasText}.</p><a class="btn" href="../../booking/">CHECK AVAILABILITY</a></section>
+<section class="faq"><p class="eyebrow">FAQ</p><h2>Mobile Detailing in ${town}</h2><details open><summary>Do you come to ${town}?</summary><p>Yes. We provide mobile detailing throughout ${town} and surrounding areas.</p></details><details><summary>Where can you detail my car?</summary><p>We can come to your home, workplace or another suitable location.</p></details><details><summary>How do I book?</summary><p>Use our online booking page to choose your service and preferred time.</p></details></section>
+<section class="final-cta"><h2>Ready For A Proper Clean?</h2><p>Book your mobile detail in ${town} and let us come to you.</p><a class="btn" href="../../booking/">BOOK ONLINE NOW</a></section>`;
